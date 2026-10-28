@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7fb"><title>FileMind AI — Your document workspace</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <main id="authView" class="auth-shell">
+    <section class="auth-brand"><div class="brand-mark">F</div><div class="eyebrow">YOUR DOCUMENT WORKSPACE</div><h1>Make every document<br><span>easier to understand.</span></h1><p>Upload your files, get the key ideas, and ask questions in plain language.</p><div class="auth-note">Private workspace · Answers grounded in your files</div></section>
+    <section class="auth-card"><div class="auth-tabs"><button class="tab active" data-mode="login">Log in</button><button class="tab" data-mode="register">Create account</button></div>
+      <h2 id="authTitle">Welcome back</h2><p class="muted" id="authHint">Log in to pick up where you left off.</p>
+      <form id="authForm"><label id="nameLabel" class="hidden">Name<input id="name" autocomplete="name"></label><label>Email address<input id="email" type="email" autocomplete="email" required placeholder="you@example.com"></label><label>Password<input id="password" type="password" autocomplete="current-password" required minlength="8" placeholder="At least 8 characters"></label><button class="primary full" id="authSubmit">Log in</button></form><div id="authMessage" class="message" role="status"></div>
+    </section>
+  </main>
+  <div id="appView" class="app-shell hidden">
+    <aside class="sidebar"><a class="brand" href="#"><span class="brand-mark small">F</span><span>FileMind<span class="brand-ai"> AI</span></span></a><button id="newChat" class="new-chat">＋ <span>New conversation</span></button><div class="side-label">YOUR DOCUMENTS</div><div id="fileList" class="file-list"></div><div class="sidebar-foot"><span class="avatar" id="avatar">U</span><span id="userName">User</span><button id="logout" class="icon-button" title="Log out">↗</button></div></aside>
+    <section class="workspace"><header class="topbar"><div><div class="eyebrow">FILEMIND AI</div><div class="top-title" id="topTitle">Your workspace</div></div><div class="status-pill"><span class="status-dot"></span> Workspace ready</div></header>
+      <section id="welcome" class="welcome"><div class="welcome-kicker">A CLEARER WAY TO READ</div><h1>What would you like<br>to <span>understand today?</span></h1><p>Drop in a document to get started. Your files stay in your private workspace.</p>
+        <label id="dropZone" class="drop-zone"><input id="fileInput" type="file" accept=".pdf,.txt,.csv,.png,.jpg,.jpeg"><span class="upload-icon">↑</span><strong>Choose a file or drag it here</strong><span class="muted">PDF, TXT, CSV, PNG or JPG · up to 10 MB</span></label>
+        <div class="quick-row"><div class="quick-card"><span>✦</span><div><b>Get the gist</b><small>Summarize long documents</small></div></div><div class="quick-card"><span>⌕</span><div><b>Find an answer</b><small>Ask questions about a file</small></div></div><div class="quick-card"><span>▤</span><div><b>Keep your place</b><small>Return to recent documents</small></div></div></div>
+      </section>
+      <section id="documentView" class="document-view hidden"><div class="doc-heading"><div class="doc-icon">▤</div><div class="doc-name-wrap"><h1 id="docName">Document</h1><p id="docMeta" class="muted"></p></div><button id="deleteFile" class="outline danger">Delete file</button></div><div class="doc-tabs"><button class="doc-tab active" data-panel="summaryPanel">Summary</button><button class="doc-tab" data-panel="chatPanel">Ask this file</button></div>
+        <section id="summaryPanel" class="content-panel"><div class="panel-title"><div><div class="eyebrow">AT A GLANCE</div><h2>Document summary</h2></div><button id="summarize" class="primary">✦ Generate summary</button></div><div id="summaryContent" class="result-card muted">Generate a summary to see the main ideas, key details, and conclusions.</div></section>
+        <section id="chatPanel" class="content-panel hidden"><div class="panel-title"><div><div class="eyebrow">DOCUMENT Q&amp;A</div><h2>Ask a question</h2></div></div><div id="chatMessages" class="chat-messages"><div class="assistant-message">Ask a question about this document. I’ll look for the relevant passages.</div></div><form id="askForm" class="ask-form"><input id="question" maxlength="2000" placeholder="Ask anything about this document…" required><button class="primary" aria-label="Send question">↑</button></form></section>
+      </section><div id="toast" class="toast" role="status"></div><footer class="app-footer">AI responses can make mistakes. Check important details against the source document.</footer>
+    </section>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body></html>
